@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="{{ url_for('index') }}" method="POST">
+        <label for="prefe">Preferência:</label>
+        <input type="text" id="prefe" name="prefe">
+        <button>Enviar</button>
+    </form>
+    <br>
+    {% if tipo %}
+    {% for prato in pratos %}
+    {% if prato['tipo'] == tipo %}
+    <ul>
+        <li>{{ prato.nome }}</li>
+        <li>{{ prato.preco }}</li>
+        <li>{{ prato.tipo }}</li>
+    </ul>
+    {% endif %}
+    {% endfor %}
+
+    {% else %}
+    {% if prefe %}
+    {% for prato in pratos %}
+    {% if prato['tipo'] == prefe %}
+    <ul>
+        <li>{{ prato.nome }}</li>
+        <li>{{ prato.preco }}</li>
+        <li>{{ prato.tipo }}</li>
+    </ul>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    {% for prato in pratos %}
+    <ul>
+        <li>{{ prato.nome }}</li>
+        <li>{{ prato.preco }}</li>
+        <li>{{ prato.tipo }}</li>
+    </ul>
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+
+</body>
+
+</html>
